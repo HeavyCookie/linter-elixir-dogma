@@ -14,7 +14,7 @@ export const provideLinter = () => ({
   lint: async (textEditor) => {
     filePath = textEditor.getPath()
     const output = await helpers.exec(
-      atom.config.get('atom-elixir-dogma.executablePath'),
+      atom.config.get('linter-elixir-dogma.executablePath'),
       ['dogma', filePath],
       { ignoreExitCode: true }
     )
