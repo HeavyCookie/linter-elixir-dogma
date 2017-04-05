@@ -1,8 +1,9 @@
 {
-  "name": "linter-dogma",
-  "version": "0.1.0",
+  "name": "linter-elixir-dogma",
+  "version": "0.0.0",
   "description": "Lint Elixir files with Dogma style checker",
   "main": "index.js",
+  "repository": "https://github.com/HeavyCookie/linter-elixir-dogma",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
