@@ -1,6 +1,6 @@
 {
   "name": "linter-elixir-dogma",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Lint Elixir files with Dogma style checker",
   "main": "index.js",
   "repository": "https://github.com/HeavyCookie/linter-elixir-dogma",
@@ -24,7 +24,9 @@
   },
   "author": "Thibault Lacroux <thibault.lacroux@gmail.com>",
   "license": "MIT",
-  "package-deps": ["linter:2.0.0"],
+  "package-deps": [
+    "linter:2.0.0"
+  ],
   "dependencies": {
     "atom-linter": "^9.0.1",
     "atom-package-deps": "^4.5.0"
