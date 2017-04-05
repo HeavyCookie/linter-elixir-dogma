@@ -1,6 +1,6 @@
 {
   "name": "linter-elixir-dogma",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Lint Elixir files with Dogma style checker",
   "main": "index.js",
   "repository": "https://github.com/HeavyCookie/linter-elixir-dogma",
