@@ -3,6 +3,7 @@ import { CompositeDisposable } from 'atom'
 import * as helpers from 'atom-linter'
 import { dirname } from 'path'
 import { install as installDeps } from 'atom-package-deps'
+import { execSync } from 'child_process'
 
 const regex = /(\d+): (.+)/gm
 
@@ -16,10 +17,13 @@ export const provideLinter = () => ({
     const output = await helpers.exec(
       atom.config.get('linter-elixir-dogma.executablePath'),
       ['dogma', filePath],
-      { ignoreExitCode: true }
+      {
+        ignoreExitCode: true,
+        cwd: atom.project.rootDirectories[0].path,
+      }
     )
-    let results;
-    const messages = [];
+    let results
+    const messages = []
     while((results = regex.exec(output)) !== null) {
       const lineNumber = parseInt(results[1])
       const message = results[2]
