@@ -13,7 +13,11 @@ export const provideLinter = () => ({
   lintsOnChange: true,
   lint: async (textEditor) => {
     filePath = textEditor.getPath()
-    const output = await helpers.exec('/usr/local/bin/mix', ['dogma', filePath], { ignoreExitCode: true })
+    const output = await helpers.exec(
+      atom.config.get('atom-elixir-dogma.executablePath'),
+      ['dogma', filePath],
+      { ignoreExitCode: true }
+    )
     let results;
     const messages = [];
     while((results = regex.exec(output)) !== null) {
