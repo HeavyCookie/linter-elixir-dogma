@@ -1,0 +1,29 @@
+{
+  "name": "linter-dogma",
+  "version": "0.1.0",
+  "description": "Lint Elixir files with Dogma style checker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "atom",
+    "dogma",
+    "elixir"
+  ],
+  "engines": {
+    "atom": ">=1.4.0 <2.0.0"
+  },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "author": "Thibault Lacroux <thibault.lacroux@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "atom-linter": "^9.0.1"
+  }
+}
