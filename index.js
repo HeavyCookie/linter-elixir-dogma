@@ -11,7 +11,7 @@ export const provideLinter = () => ({
   name: 'Dogma',
   grammarScopes: ['source.elixir'],
   scope: 'file',
-  lintsOnChange: true,
+  lintsOnChange: false,
   lint: async (textEditor) => {
     filePath = textEditor.getPath()
     const output = await helpers.exec(
