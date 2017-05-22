@@ -25,7 +25,7 @@ export const provideLinter = () => ({
     let results
     const messages = []
     while((results = regex.exec(output)) !== null) {
-      const lineNumber = parseInt(results[1], 10)
+      const lineNumber = parseInt(results[1], 10) - 1
       const lineColumn = parseInt(results[2], 10)
       const severity = results[3] === 'E' ? 'error' : 'warning'
       const message = results[4]
