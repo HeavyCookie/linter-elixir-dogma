@@ -5,7 +5,7 @@ import { dirname } from 'path'
 import { install as installDeps } from 'atom-package-deps'
 import { execSync } from 'child_process'
 
-const regex = /(\d+): (.+)/gm
+const regex = /^.*:(\d+):(\d+): ([WE]): (.+)$/gm
 
 export const provideLinter = () => ({
   name: 'Dogma',
@@ -16,7 +16,7 @@ export const provideLinter = () => ({
     filePath = textEditor.getPath()
     const output = await helpers.exec(
       atom.config.get('linter-elixir-dogma.executablePath'),
-      ['dogma', filePath],
+      ['dogma', filePath, '--format=flycheck'],
       {
         ignoreExitCode: true,
         cwd: atom.project.rootDirectories[0].path,
@@ -26,15 +26,17 @@ export const provideLinter = () => ({
     const messages = []
     while((results = regex.exec(output)) !== null) {
       const lineNumber = parseInt(results[1])
-      const message = results[2]
+      const lineColumn = parseInt(results[2])
+      const severity = results[3] === 'E' ? 'error' : 'warning'
+      const message = results[4]
 
       messages.push({
         location: {
           file: filePath,
-          position: [[lineNumber, 0], [lineNumber, 0]],
+          position: [[lineNumber, lineColumn], [lineNumber, lineColumn]],
         },
         excerpt: message,
-        severity: 'error',
+        severity,
       })
     }
     return messages
